@@ -1,0 +1,38 @@
+.btn{
+  cursor: pointer;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-size: 25px;
+  line-height: 120%;
+  border: transparent;
+}
+
+.btn.delete{
+  cursor: pointer;
+  padding: 10px;
+  font-size: 20px;
+  opacity: 0;
+  transition: all .3s;
+}
+
+.btn_number, .btn_dot{
+  background-color: #505050;
+  color: #fff;
+}
+
+.btn_command{
+  background-color: #C8C8C8;
+}
+
+.btn_operator{
+  background-color: orange;
+  color: #fff;
+}
+
+.btn_operator[disabled="disabled"]{
+  opacity: 0.5;
+}
+
+#btn_0{
+  grid-area: 5 / 1 / 6 / 3;
+}
