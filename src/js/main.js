@@ -1,4 +1,6 @@
+//стили
 import './../styles/style.scss';
+//components
 import './components/content/content.js';
-// import './components/wrapper.js'
-// import './components/app.js';
+//scripts
+import './components/scripts.js';
