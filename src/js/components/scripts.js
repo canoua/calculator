@@ -25,8 +25,8 @@ actionsBtn.forEach(function(actionNumber) {
   actionNumber.addEventListener('click', function() {
     inputArray = '';
     
-    // array.push(actionNumber.textContent);
-    // addElementArray();
+    array.push(actionNumber.textContent);
+    addElementArray();
     // arrayInput = '';
     // input.addEventListener('change', function() {
     //   inputArray = '';

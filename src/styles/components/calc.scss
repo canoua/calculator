@@ -5,30 +5,26 @@
   padding: 50px;
   border-radius: 30px;
   display: grid;
+  &__main{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+  }
+  &__header{
+    width: 100%;
+    margin-bottom: 50px;
+    display: flex;
+    &__input{
+      width: 100%;
+      height: 100%;
+      margin-right: 20px;
+      background: transparent;
+      color:#fff;
+      font-size: 40px;
+      line-height: 120%;
+      border: none;
+    }
+  }
 }
-
-.calc__main{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  grid-column-gap: 5px;
-  grid-row-gap: 5px;
-}
-
-.calc__header{
-  width: 100%;
-  margin-bottom: 50px;
-  display: flex;
-}
-
-.calc__header__input{
-  width: 100%;
-  height: 100%;
-  margin-right: 20px;
-  background: transparent;
-  color:#fff;
-  font-size: 40px;
-  line-height: 120%;
-  border: none;
-}
-
