@@ -15,6 +15,7 @@ const btnEqual = document.querySelector('.equal');
 btnEqual.addEventListener('click', function() {
   let equal =  Number(inputArray);
   alert(equal);
+  console.log(typeof(inputArray));
 })
 
 //вывод действия
@@ -23,17 +24,20 @@ btnEqual.addEventListener('click', function() {
 //удалить один массив, запомнить его, вывести действие, заблочить все действия, 
 actionsBtn.forEach(function(actionNumber) {
   actionNumber.addEventListener('click', function() {
-    inputArray = '';
+    console.log(actionNumber.value);
+    // inputArray = '';
     
-    array.push(actionNumber.textContent);
-    addElementArray();
+    array.push(actionNumber.value);
+    inputArray = array.join('');
+    input.value = inputArray;
+    // addElementArray();
     // arrayInput = '';
     // input.addEventListener('change', function() {
     //   inputArray = '';
     // })
-    // actionsBtn.forEach(element => {
-    //   element.setAttribute("disabled", "disabled");
-    // });
+    actionsBtn.forEach(element => {
+      element.setAttribute("disabled", "disabled");
+    });
   })
 })
 
@@ -53,6 +57,10 @@ btnNumbers.forEach(function(btnNumber) {
     inputArray = array.join('');
     input.value = inputArray;
     
+    actionsBtn.forEach(element => {
+      element.removeAttribute("disabled", "disabled");
+    });
+
     checkForNull();
   })
 })
