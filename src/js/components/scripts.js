@@ -11,20 +11,62 @@ const btnDelete = document.querySelector('#delete');
 const btnZeroing = document.querySelector('#btn_zeroing');
 const btnEqual = document.querySelector('.equal');
 
-//!доработать!/
+let numbers = {
+  num1: 0,
+  num2: 0,
+  action: '',
+  result: 0
+}
+
+// доработать!
+// сделать неактивными кнопки с числами
 btnEqual.addEventListener('click', function() {
-  let num2 = Number(input.textContent);
+  numbers.num2 = Number(input.textContent);
+  output.insertAdjacentHTML('beforeend', numbers.num2);
+  output.insertAdjacentHTML('beforeend', '=');
+  
+  input.textContent = '';
+  
+  console.log(numbers);
+  checkForNull();
+
+  switch (numbers.action) {
+    case '+':
+      numbers.result = numbers.num1 + numbers.num2;
+      break;
+    case '-':
+      numbers.result = numbers.num1 - numbers.num2;
+      break;
+    case '*':
+      numbers.result = numbers.num1 * numbers.num2;
+      break;
+    case '/':
+      numbers.result = numbers.num1 / numbers.num2;
+      break;
+  
+    default:
+      break;
+  }
+
+  output.insertAdjacentHTML('beforeend', numbers.result);
 })
 
 actionsBtn.forEach(function(actionBtn) {
   actionBtn.addEventListener('click', function() {
-    let num1 = Number(input.textContent);
+    numbers.num1 = Number(input.textContent);
+    numbers.action = actionBtn.value;
+    
+    output.textContent = numbers.num1; 
 
-    output.textContent = num1; 
-    actionNumber.forEach(element => {
-      element.setAttribute("disabled", "disabled");
+    output.insertAdjacentHTML('beforeend', numbers.action);
+    
+    input.textContent = '';
+    actionsBtn.forEach(actionBtn => {
+      actionBtn.setAttribute("disabled", "disabled");
     });
-    input.textContent = actionNumber.value;
+
+    checkForNull();
+    
   })
 })
 
@@ -42,9 +84,9 @@ btnNumbers.forEach(function(btnNumber) {
   btnNumber.addEventListener('click', function() {
     input.insertAdjacentHTML('beforeend', btnNumber.value);
 
-    actionsBtn.forEach(element => {
-      element.removeAttribute("disabled", "disabled");
-    });
+    // actionsBtn.forEach(element => {
+    //   element.removeAttribute("disabled", "disabled");
+    // });
 
     checkForNull();
   })
