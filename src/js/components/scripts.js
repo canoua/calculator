@@ -1,7 +1,3 @@
-// массив
-let array = [];
-let inputArray;
-
 // кнопки с числами
 let btnNumbers = document.querySelectorAll('.btn_number');
 
@@ -9,45 +5,31 @@ let btnNumbers = document.querySelectorAll('.btn_number');
 let actionsBtn = document.querySelectorAll('.math-action');
 
 // поле ввода/вывода
-let input = document.querySelector('.calc__header__input');
+const input = document.querySelector('.calc__header__input');
 const btnDelete = document.querySelector('#delete');
 const btnZeroing = document.querySelector('#btn_zeroing');
 const btnEqual = document.querySelector('.equal');
 
 //!доработать!/
 btnEqual.addEventListener('click', function() {
-  let equal =  Number(inputArray);
-  // alert(equal);
-  // console.log(typeof(inputArray));
+  // let equal =  Number(inputArray);
 })
 
-//вывод действия
-//!доработать!/
-//удалить один массив, запомнить его, вывести действие, заблочить все действия, 
 actionsBtn.forEach(function(actionNumber) {
   actionNumber.addEventListener('click', function() {
-    console.log(actionNumber.value);
-    // inputArray = '';
-    
-    array.push(actionNumber.value);
-    inputArray = array.join('');
-    input.value = inputArray;
-    // addElementArray();
-    // arrayInput = '';
-    // input.addEventListener('change', function() {
-    //   inputArray = '';
-    // })
+    let num1 = Number(input.value);
+    console.log(num1);
     actionsBtn.forEach(element => {
       element.setAttribute("disabled", "disabled");
     });
   })
 })
 
-// проверка: если 0, то отображаем кнопку delete 
+// если поле ввода не пусто, то отображаем кнопку delete 
 function checkForNull() {
-  if (array.length == 0) {
+  if (input.textContent == '') {
     btnDelete.style.opacity = '0';
-  } else if (array.length != 0) {
+  } else if (input.textContent !== '') {
     btnDelete.style.opacity = '1';
   }
 }
@@ -55,10 +37,8 @@ function checkForNull() {
 // ввод чисел/работает
 btnNumbers.forEach(function(btnNumber) {
   btnNumber.addEventListener('click', function() {
-    array.push(btnNumber.value);
-    inputArray = array.join('');
-    input.value = inputArray;
-    
+    input.insertAdjacentHTML('beforeend', btnNumber.value);
+
     actionsBtn.forEach(element => {
       element.removeAttribute("disabled", "disabled");
     });
@@ -67,19 +47,12 @@ btnNumbers.forEach(function(btnNumber) {
   })
 })
 
-// кнопка 'Удалить'/работает
+// кнопка 'Удалить'
 btnDelete.addEventListener('click', function() {
-  array.pop();
-  inputArray = array.join('');
-  input.value = inputArray;
-
   checkForNull();
 })
 
-// обнуление строки вывода/работает
+// обнуление строки вывода
 btnZeroing.addEventListener('click', function() {
-  array.length = 0;
-  inputArray = array.join('');
-  input.value = inputArray;
   checkForNull();
 });

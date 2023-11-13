@@ -1,7 +1,8 @@
 export default function header() {
   const header = `
+    <div class="output"></div>
     <header class="calc__header">
-      <input class="calc__header__input" type="text" readonly>
+      <div class="calc__header__input"></div>
       <button class="btn delete" id="delete">Удалить</button>
     </header>
   `
