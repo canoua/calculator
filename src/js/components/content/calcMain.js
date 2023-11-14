@@ -2,7 +2,6 @@ export default function calcMain() {
   const calcMain = `
     <div class="calc__main">
       <input type="button" class="btn btn_command" id="btn_zeroing" value="C" />
-      <input type="button" class="btn btn_command" value="+/-" />
       <input type="button" class="btn btn_command" value="%" />
       <input type="button" class="btn btn_operator math-action" value="/" />
       <input type="button" class="btn btn_number" value="7" />
@@ -19,7 +18,7 @@ export default function calcMain() {
       <input type="button" class="btn btn_operator math-action" value="+" />
       <input type="button" class="btn btn_number" id="btn_0" value="0" />
       <input type="button" class="btn btn_dot" value="." />
-      <input type="button"  class="btn btn_operator equal" value="=">
+      <input type="button"  class="btn btn_operator equal" id="btn_equal" value="=">
     </div>
   `
 }
