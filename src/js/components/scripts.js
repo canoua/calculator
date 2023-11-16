@@ -1,21 +1,36 @@
-// кнопки с числами
-let btnNumbers = document.querySelectorAll('.btn_number');
-
-// кнопки с действиями
-let actionsBtn = document.querySelectorAll('.math-action');
-
-// поле ввода/вывода
+// поле ввода
 const input = document.querySelector('.calc__header__input');
+// поле вывода
 const output = document.querySelector('.output');
-const btnDelete = document.querySelector('#delete');
+// обнуление полей
 const btnZeroing = document.querySelector('#btn_zeroing');
+// кнопки
+// числа
+const btnNumbers = document.querySelectorAll('.btn_number');
+// действия
+const actionsBtn = document.querySelectorAll('.math-action');
+// delete
+const btnDelete = document.querySelector('#delete');
+// "="
 const btnEqual = document.querySelector('.equal');
 
 let numbers = {
   num1: 0,
   num2: 0,
   action: '',
-  result: 0
+  result: 0,
+  plus: function() {
+    return this.result = this.num1 + this.num2;
+  },
+  minus: function() {
+    return this.result = this.num1 - this.num2;
+  },
+  multiplication: function() {
+    return this.result = this.num1 * this.num2;
+  },
+  division: function() {
+    return this.result = this.num1 / this.num2;
+  }
 }
 
 // функция получения результата действия
@@ -30,16 +45,16 @@ btnEqual.addEventListener('click', function() {
 
   switch (numbers.action) {
     case '+':
-      numbers.result = numbers.num1 + numbers.num2;
+      numbers.plus();  
       break;
     case '-':
-      numbers.result = numbers.num1 - numbers.num2;
+      numbers.minus();
       break;
     case '*':
-      numbers.result = numbers.num1 * numbers.num2;
+      numbers.multiplication();
       break;
     case '/':
-      numbers.result = numbers.num1 / numbers.num2;
+      numbers.division();
       break;
     default:
       break;

@@ -17,8 +17,8 @@ export default function calcMain() {
       <input type="button" class="btn btn_number" value="3" />
       <input type="button" class="btn btn_operator math-action" value="+" />
       <input type="button" class="btn btn_number" id="btn_0" value="0" />
-      <input type="button" class="btn btn_dot" value="." />
-      <input type="button" class="btn btn_operator equal" id="btn_equal" value="=">
+      <input type="button" class="btn btn_dot" value="." id="btn_dot" />
+      <input type="button" class="btn btn_operator equal" id="btn_equal" value="=" />
     </div>
   `
 }
