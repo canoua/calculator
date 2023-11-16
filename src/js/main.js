@@ -2,7 +2,7 @@
 import './../styles/style.scss';
 
 // components
-import './components/content/content.js';
+import './components/render.js'
 
 // scripts
 import './components/scripts.js';

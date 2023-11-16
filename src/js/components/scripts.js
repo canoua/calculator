@@ -4,6 +4,7 @@ const input = document.querySelector('.calc__header__input');
 const output = document.querySelector('.output');
 // обнуление полей
 const btnZeroing = document.querySelector('#btn_zeroing');
+
 // кнопки
 // числа
 const btnNumbers = document.querySelectorAll('.btn_number');
@@ -34,7 +35,7 @@ let numbers = {
 }
 
 // функция получения результата действия
-btnEqual.addEventListener('click', function() {
+function equal() {
   numbers.num2 = Number(input.textContent);
   output.insertAdjacentHTML('beforeend', numbers.num2);
   output.insertAdjacentHTML('beforeend', '=');
@@ -61,8 +62,9 @@ btnEqual.addEventListener('click', function() {
   }
 
   output.insertAdjacentHTML('beforeend', numbers.result);
-})
+}
 
+// наследование?
 actionsBtn.forEach(function(actionBtn) {
   actionBtn.addEventListener('click', function() {
     numbers.num1 = Number(input.textContent);
@@ -78,7 +80,6 @@ actionsBtn.forEach(function(actionBtn) {
     });
 
     checkForNull();
-    
   })
 })
 
@@ -91,9 +92,9 @@ function checkForNull() {
   }
 }
 
-// ввод чисел/работает
+// ввод чисел // наследование??
 btnNumbers.forEach(function(btnNumber) {
-  btnNumber.addEventListener('click', function() {
+  btnNumber.addEventListener('click', function enteringNumbers() {
     input.insertAdjacentHTML('beforeend', btnNumber.value);
 
     actionsBtn.forEach(actionBtn => {
@@ -104,16 +105,16 @@ btnNumbers.forEach(function(btnNumber) {
   })
 })
 
-// кнопка 'Удалить'
-btnDelete.addEventListener('click', function() {
+// очистка строки ввода и вывода
+function deletion() {
   let string = input.textContent;
   let stringAfter = string.slice(0, string.length - 1);
   input.textContent = stringAfter;
   checkForNull();
-})
+}
 
 // обнуление строки вывода
-btnZeroing.addEventListener('click', function() {
+function zeroing() {
   numbers.num1 = 0;
   numbers.num2 = 0;
   numbers.action = '';
@@ -121,4 +122,8 @@ btnZeroing.addEventListener('click', function() {
   input.textContent = '';
   output.textContent = '';
   checkForNull();
-});
+}
+
+btnEqual.addEventListener('click', equal);
+btnDelete.addEventListener('click', deletion);
+btnZeroing.addEventListener('click', zeroing);
