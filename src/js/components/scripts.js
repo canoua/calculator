@@ -35,9 +35,8 @@ let numbers = {
     return this.result = this.num1 / this.num2;
   },
   percent: function() {
-    if (input.textContent !== '0') {
-      return this.result = this.num1/100 * this.num2;
-    }
+    // num2 - процент
+    return this.result = this.num1/100 * this.num2;
   }
 }
 
@@ -140,15 +139,6 @@ function zeroing() {
   checkForNull();
 }
 
-// подсчет процента
-function percent() {
-  if (input.textContent !== '') {
-    // numbers.percent();
-    input.textContent = ''
-  }
-}
-
-btnPercent.addEventListener('click', percent);
 btnEqual.addEventListener('click', equal);
 btnDelete.addEventListener('click', deletion);
 btnZeroing.addEventListener('click', zeroing);
