@@ -3,13 +3,13 @@ const header = `
   <div class="output"></div>
   <header class="calc__header">
     <div class="calc__header__input"></div>
-    <button class="btn delete" id="delete">Удалить</button>
+    <button class="btn delete" id="btn_delete">Удалить</button>
   </header>
 `
 const calcMain = `
   <div class="calc__main">
-    <input type="button" class="btn btn_command" id="btn_zeroing" value="C" />
-    <input type="button" class="btn btn_command" id="btn_percent" value="%" />
+    <input type="button" class="btn btn_command" value="C" id="btn_zeroing" />
+    <input type="button" class="btn btn_command math-action" value="%" id="btn_percent" />
     <input type="button" class="btn btn_operator math-action" value="/" />
     <input type="button" class="btn btn_number" value="7" />
     <input type="button" class="btn btn_number" value="8" />

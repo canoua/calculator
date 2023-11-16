@@ -3,7 +3,7 @@ const input = document.querySelector('.calc__header__input');
 // поле вывода
 const output = document.querySelector('.output');
 // обнуление полей
-const btnZeroing = document.querySelector('#btn_zeroing');
+const btnZeroing = document.getElementById('btn_zeroing');
 
 // кнопки
 // числа
@@ -11,9 +11,11 @@ const btnNumbers = document.querySelectorAll('.btn_number');
 // действия
 const btnActions = document.querySelectorAll('.math-action');
 // delete
-const btnDelete = document.getElementById('delete');
+const btnDelete = document.getElementById('btn_delete');
 // "="
-const btnEqual = document.querySelector('.equal');
+const btnEqual = document.getElementById('btn_equal');
+// percent
+const btnPercent = document.getElementById('btn_percent')
 
 let numbers = {
   num1: 0,
@@ -31,6 +33,11 @@ let numbers = {
   },
   division: function() {
     return this.result = this.num1 / this.num2;
+  },
+  percent: function() {
+    if (input.textContent !== '0') {
+      return this.result = this.num1/100 * this.num2;
+    }
   }
 }
 
@@ -57,6 +64,8 @@ function equal() {
     case '/':
       numbers.division();
       break;
+    case '%':
+      numbers.percent();
     default:
       break;
   }
@@ -94,25 +103,22 @@ function checkForNull() {
 
 // ввод чисел // наследование??
 btnNumbers.forEach(function(btnNumber) {
-  
-    btnNumber.addEventListener('click', function enteringNumbers() {
-      // запрещаем ввод '0' при пустой строке
-      if(input.textContent == '') {
-        if(btnNumber.value == '0') {
-          return;
-        }
+  btnNumber.addEventListener('click', function () {
+    // запрещаем ввод '0' при пустой строке
+    if(input.textContent == '') {
+      if(btnNumber.value == '0') {
+        return;
       }
+    }
 
-      input.insertAdjacentHTML('beforeend', btnNumber.value);
+    input.insertAdjacentHTML('beforeend', btnNumber.value);
 
-      btnActions.forEach(btnAction => {
-        btnAction.removeAttribute("disabled", "disabled");
-      });
+    btnActions.forEach(btnAction => {
+      btnAction.removeAttribute("disabled", "disabled");
+    });
 
-      checkForNull();
-    })
-  // }
-  
+    checkForNull();
+  })  
 })
 
 // очистка строки ввода и вывода
@@ -134,6 +140,15 @@ function zeroing() {
   checkForNull();
 }
 
+// подсчет процента
+function percent() {
+  if (input.textContent !== '') {
+    // numbers.percent();
+    input.textContent = ''
+  }
+}
+
+btnPercent.addEventListener('click', percent);
 btnEqual.addEventListener('click', equal);
 btnDelete.addEventListener('click', deletion);
 btnZeroing.addEventListener('click', zeroing);
