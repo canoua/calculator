@@ -9,9 +9,9 @@ const btnZeroing = document.querySelector('#btn_zeroing');
 // числа
 const btnNumbers = document.querySelectorAll('.btn_number');
 // действия
-const actionsBtn = document.querySelectorAll('.math-action');
+const btnActions = document.querySelectorAll('.math-action');
 // delete
-const btnDelete = document.querySelector('#delete');
+const btnDelete = document.getElementById('delete');
 // "="
 const btnEqual = document.querySelector('.equal');
 
@@ -65,18 +65,18 @@ function equal() {
 }
 
 // наследование?
-actionsBtn.forEach(function(actionBtn) {
-  actionBtn.addEventListener('click', function() {
+btnActions.forEach(function(btnAction) {
+  btnAction.addEventListener('click', function() {
     numbers.num1 = Number(input.textContent);
-    numbers.action = actionBtn.value;
+    numbers.action = btnAction.value;
     
     output.textContent = numbers.num1; 
     output.insertAdjacentHTML('beforeend', numbers.action);
     
     input.textContent = '';
     
-    actionsBtn.forEach(actionBtn => {
-      actionBtn.setAttribute("disabled", "disabled");
+    btnActions.forEach(btnAction => {
+      btnAction.setAttribute("disabled", "disabled");
     });
 
     checkForNull();
@@ -94,15 +94,25 @@ function checkForNull() {
 
 // ввод чисел // наследование??
 btnNumbers.forEach(function(btnNumber) {
-  btnNumber.addEventListener('click', function enteringNumbers() {
-    input.insertAdjacentHTML('beforeend', btnNumber.value);
+  
+    btnNumber.addEventListener('click', function enteringNumbers() {
+      // запрещаем ввод '0' при пустой строке
+      if(input.textContent == '') {
+        if(btnNumber.value == '0') {
+          return;
+        }
+      }
 
-    actionsBtn.forEach(actionBtn => {
-      actionBtn.removeAttribute("disabled", "disabled");
-    });
+      input.insertAdjacentHTML('beforeend', btnNumber.value);
 
-    checkForNull();
-  })
+      btnActions.forEach(btnAction => {
+        btnAction.removeAttribute("disabled", "disabled");
+      });
+
+      checkForNull();
+    })
+  // }
+  
 })
 
 // очистка строки ввода и вывода
