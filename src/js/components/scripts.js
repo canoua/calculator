@@ -15,7 +15,9 @@ const btnDelete = document.getElementById('btn_delete');
 // "="
 const btnEqual = document.getElementById('btn_equal');
 // percent
-const btnPercent = document.getElementById('btn_percent')
+const btnPercent = document.getElementById('btn_percent');
+// comma
+const btnComma = document.getElementById('btn_comma');
 
 let numbers = {
   num1: 0,
@@ -104,7 +106,7 @@ function checkForNull() {
 btnNumbers.forEach(function(btnNumber) {
   btnNumber.addEventListener('click', function () {
     // запрещаем ввод '0' при пустой строке
-    if(input.textContent == '') {
+    if(input.textContent == '0') {
       if(btnNumber.value == '0') {
         return;
       }
@@ -115,6 +117,8 @@ btnNumbers.forEach(function(btnNumber) {
     btnActions.forEach(btnAction => {
       btnAction.removeAttribute("disabled", "disabled");
     });
+
+    console.log(typeof numbers.num1);
 
     checkForNull();
   })  
@@ -139,6 +143,16 @@ function zeroing() {
   checkForNull();
 }
 
+// добавление запятой
+function comma() {
+  if(input.textContent !== '') {
+    console.log('comma');
+  } else {
+    return;
+  }
+}
+
+// btnComma.addEventListener('click', comma);
 btnEqual.addEventListener('click', equal);
 btnDelete.addEventListener('click', deletion);
 btnZeroing.addEventListener('click', zeroing);

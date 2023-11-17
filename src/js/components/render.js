@@ -24,7 +24,7 @@ const calcMain = `
     <input type="button" class="btn btn_number" value="3" />
     <input type="button" class="btn btn_operator math-action" value="+" />
     <input type="button" class="btn btn_number" value="0" id="btn_zero" />
-    <input type="button" class="btn btn_dot" value="." id="btn_dot" />
+    <input type="button" class="btn btn_dot btn_number" value="." id="btn_comma" />
     <input type="button" class="btn btn_operator equal" value="=" id="btn_equal" />
   </div>
 `
