@@ -19,7 +19,8 @@ const btnPercent = document.getElementById('btn_percent');
 // comma
 const btnComma = document.getElementById('btn_comma');
 
-let numbers = {
+
+let data = {
   num1: 0,
   num2: 0,
   action: '',
@@ -44,44 +45,44 @@ let numbers = {
 
 // функция получения результата действия
 function equal() {
-  numbers.num2 = Number(input.textContent);
-  output.insertAdjacentHTML('beforeend', numbers.num2);
+  data.num2 = Number(input.textContent);
+  output.insertAdjacentHTML('beforeend', data.num2);
   output.insertAdjacentHTML('beforeend', '=');
   
   input.textContent = '';
 
   checkForNull();
 
-  switch (numbers.action) {
+  switch (data.action) {
     case '+':
-      numbers.plus();  
+      data.plus();  
       break;
     case '-':
-      numbers.minus();
+      data.minus();
       break;
     case '*':
-      numbers.multiplication();
+      data.multiplication();
       break;
     case '/':
-      numbers.division();
+      data.division();
       break;
     case '%':
-      numbers.percent();
+      data.percent();
     default:
       break;
   }
 
-  output.insertAdjacentHTML('beforeend', numbers.result);
+  output.insertAdjacentHTML('beforeend', data.result);
 }
 
 // наследование?
 btnActions.forEach(function(btnAction) {
   btnAction.addEventListener('click', function() {
-    numbers.num1 = Number(input.textContent);
-    numbers.action = btnAction.value;
+    data.num1 = Number(input.textContent);
+    data.action = btnAction.value;
     
-    output.textContent = numbers.num1; 
-    output.insertAdjacentHTML('beforeend', numbers.action);
+    output.textContent = data.num1; 
+    output.insertAdjacentHTML('beforeend', data.action);
     
     input.textContent = '';
     
@@ -106,8 +107,8 @@ function checkForNull() {
 btnNumbers.forEach(function(btnNumber) {
   btnNumber.addEventListener('click', function () {
     // запрещаем ввод '0' при пустой строке
-    if(input.textContent == '0') {
-      if(btnNumber.value == '0') {
+    if (input.textContent == '0') {
+      if (btnNumber.value == '0') {
         return;
       }
     }
@@ -118,7 +119,7 @@ btnNumbers.forEach(function(btnNumber) {
       btnAction.removeAttribute("disabled", "disabled");
     });
 
-    console.log(typeof numbers.num1);
+    console.log(typeof data.num1);
 
     checkForNull();
   })  
@@ -134,25 +135,15 @@ function deletion() {
 
 // обнуление строки вывода
 function zeroing() {
-  numbers.num1 = 0;
-  numbers.num2 = 0;
-  numbers.action = '';
-  numbers.result = 0;
+  data.num1 = 0;
+  data.num2 = 0;
+  data.action = '';
+  data.result = 0;
   input.textContent = '';
   output.textContent = '';
   checkForNull();
 }
 
-// добавление запятой
-function comma() {
-  if(input.textContent !== '') {
-    console.log('comma');
-  } else {
-    return;
-  }
-}
-
-// btnComma.addEventListener('click', comma);
 btnEqual.addEventListener('click', equal);
 btnDelete.addEventListener('click', deletion);
 btnZeroing.addEventListener('click', zeroing);

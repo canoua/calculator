@@ -6,7 +6,7 @@ const header = `
     <button class="btn delete" id="btn_delete">Удалить</button>
   </header>
 `
-const calcMain = `
+const buttons = `
   <div class="calc__main">
     <input type="button" class="btn btn_command" value="C" id="btn_zeroing" />
     <input type="button" class="btn btn_command math-action" value="%" id="btn_percent" />
@@ -34,7 +34,7 @@ app.innerHTML = `
     <h1 class="title">Калькулятор</h1>
     <div class="calc">
       ${header}
-      ${calcMain}
+      ${buttons}
     </div>
   </div>
 `
